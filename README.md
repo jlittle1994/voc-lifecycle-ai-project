@@ -1,6 +1,4 @@
-# voc-lifecycle-ai-project
-A portfolio to demonstrate an AI project for marketing professionals
-
+# AI Workflow for Audience Insight & Campaign Execution
 **Author:** Ja'Lisa Little
 
 An AI workflow that turns raw audience comments into behavioral personas, a messaging strategy, and a complete multi-channel marketing campaign, and can be rerun every season or product launch without starting over.
