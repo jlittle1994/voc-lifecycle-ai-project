@@ -19,7 +19,7 @@ An AI workflow that turns raw audience comments into behavioral personas, a mess
 
 ---
 
-## Table of contents
+## Table of Contents
 
 1. [Business case](#1-business-case)
 2. [How the workflow works](#2-how-the-workflow-works)
@@ -34,7 +34,7 @@ An AI workflow that turns raw audience comments into behavioral personas, a mess
 
 ---
 
-## 1. Business case
+## 1. Business Case
 
 Years can pass between anime seasons, and audience intent shifts in that time. Traditional social listening captures one moment and is costly to repeat. This workflow is built to be **rerun each season or for any new product launch** with minimal rework.
 
@@ -48,7 +48,7 @@ It addresses three problems:
 
 ---
 
-## 2. How the workflow works
+## 2. How the Workflow Works
 
 ```mermaid
 flowchart TD
@@ -73,7 +73,7 @@ Each phase uses the output of the one before it, and you review the output after
 
 ---
 
-## 3. Repository structure
+## 3. Repository Structure
 
 ```
 .
@@ -98,7 +98,7 @@ Each phase uses the output of the one before it, and you review the output after
     └── AI_Project_deck.pdf      # Original presentation
 ```
 
-### Run it yourself
+### Run it Yourself
 
 ```bash
 pip install -r data-collection/requirements.txt
@@ -109,7 +109,7 @@ Then create a Claude project, add `context/marketing_brief.md` and `data/voc_dat
 
 ---
 
-## 4. Step 0: Data collection (Python)
+## 4. Step 0: Data Collection (Python)
 
 **Prompt summary:** Act as a Senior Data Engineer and write a Python script that collects public audience comments from YouTube and normalizes them into a single CSV for downstream LLM persona analysis.
 
@@ -132,13 +132,13 @@ Then create a Claude project, add `context/marketing_brief.md` and `data/voc_dat
 
 ---
 
-## 5. Phase 1: Personas & sentiment
+## 5. Phase 1: Personas & Sentiment
 
 **Inputs:** Marketing Brief, `voc_dataset.csv`
 
 **Prompt summary:** Analyze the dataset and brief to build detailed personas across three lifecycle stages: Casual Viewer, Engaged Viewer, and Advocate. For each persona, define core motivations, viewing habits, pain points, and the language they use in comments.
 
-### Results: baseline segment (220 comments)
+### Results: Baseline Segment (220 comments)
 
 | Lifecycle stage | Signals in comments | Comments | Total likes |
 |---|---|---:|---:|
@@ -147,7 +147,7 @@ Then create a Claude project, add `context/marketing_brief.md` and `data/voc_dat
 | **Advocate** | Manga knowledge, arc names, VA/staff credits, spoiler policing, OST hunting, character rankings | 53 | 6,268 |
 | Unassigned | None of the above | 93 | 2,586 |
 
-### Lifecycle transition map & sentiment drift
+### Lifecycle Transition Map & Sentiment Drift
 
 *Sentiment drift* is the gradual shift in how an audience perceives and talks about a brand or product over time. The workflow found two places where viewers drop off:
 
@@ -158,11 +158,11 @@ flowchart TD
     AD["<b>Advocate</b><br/>'If you're considering watching, PLEASE DO IT!'"] -.->|"⚠ Churn risk: subtitle errors,<br/>Season 2 art-style concerns"| X[Churn]
 ```
 
-**Key finding:** Lore complexity, which the brief assumed was the top barrier, barely shows up in the comments. The real blocker is **trailers that fail to explain the show.**
+**Key Finding:** Lore complexity, which the brief assumed was the top barrier, barely shows up in the comments. The real blocker is **trailers that fail to explain the show.**
 
 ---
 
-## 6. Phase 2: Messaging matrix
+## 6. Phase 2: Messaging Matrix
 
 **Input:** Phase 1 output
 
@@ -181,7 +181,7 @@ flowchart TD
 
 ---
 
-## 7. Phase 3: Multi-channel campaign assets
+## 7. Phase 3: Multi-Channel Campaign Assets
 
 **Inputs:** Messaging Matrix, Brand Voice (from the Marketing Brief)
 
@@ -199,7 +199,7 @@ Each asset lists the VoC comments it's built on and the matrix metric it moves, 
 
 ---
 
-## 8. Results at a glance
+## 8. Results at a Glance
 
 - **A corrected assumption.** The brief assumed lore complexity was the main barrier, but the data showed it was trailer clarity. That one finding reshapes the whole acquisition strategy.
 - **Two drop-off points identified:** before episode 1 (unclear trailers) and between seasons (lost momentum).
@@ -208,7 +208,7 @@ Each asset lists the VoC comments it's built on and the matrix metric it moves, 
 
 ---
 
-## 9. Limitations & next steps
+## 9. Limitations & Next Steps
 
 | Area | Limitation | Next step |
 |---|---|---|
